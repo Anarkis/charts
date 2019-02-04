@@ -30,7 +30,7 @@ image:
 ## Enable authentication
 ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
 #
-usePassword: true
+usePassword: false
 # existingSecret: name-of-existing-secret
 
 ## MongoDB admin password
@@ -41,9 +41,9 @@ usePassword: true
 ## MongoDB custom user and database
 ## ref: https://github.com/bitnami/bitnami-docker-mongodb/blob/master/README.md#creating-a-user-and-database-on-first-run
 ##
-# mongodbUsername: username
-# mongodbPassword: password
-# mongodbDatabase: database
+#mongodbUsername: user
+#mongodbPassword: pass
+mongodbDatabase: db
 
 
 ## Whether enable/disable IPv6 on MongoDB
@@ -54,7 +54,7 @@ mongodbEnableIPv6: true
 ## MongoDB System Log Verbosity Level
 ## ref: https://github.com/bitnami/bitnami-docker-mongodb#increase-system-log-verbosity-level
 ##
-mongodbSystemLogVerbosity: 0
+mongodbSystemLogVerbosity: 1
 
 ## MongoDB additional command line flags
 ##
@@ -242,32 +242,3 @@ metrics:
   ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
   # resources: {}
-
-  ## Metrics exporter pod Annotation
-  podAnnotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "9216"
-
-  ## Prometheus Service Monitor
-  ## ref: https://github.com/coreos/prometheus-operator
-  ##      https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md
-  serviceMonitor:
-    ## If the operator is installed in your cluster, set to true to create a Service Monitor Entry
-    enabled: false
-    ## Used to pass Labels that are used by the Prometheus installed in your cluster to select Service Monitors to work with
-    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
-    additionalLabels: {}
-
-    ## Specify Metric Relabellings to add to the scrape endpoint
-    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
-    # relabellings:
-
-    alerting:
-      ## Define individual alerting rules as required
-      ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#rulegroup
-      ##      https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
-      rules: {}
-
-      ## Used to pass Labels that are used by the Prometheus installed in your cluster to select Prometheus Rules to work with
-      ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
-      additionalLabels: {}
